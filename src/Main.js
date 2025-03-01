@@ -1,18 +1,20 @@
 import { useState } from "react"
 import Recipe from "./Recipe"
 import IngredientsList from "./IngredientsList"
+import { getRecipeFromMistral } from "./Ai"
+
 export default function Main(){
     const [ingredients, setIngredients] = useState([])
-    const [recipeShown, setrecipeShown] = useState(false)
-
+    const [recipe, setrecipe] = useState("")
 
     function addIngredients(formData){
         const newIngredient = formData.get("ingredient")
         setIngredients(previngredients => [...previngredients, newIngredient])
     }
 
-    function getaRecipe(){
-        setrecipeShown(prevvalue => !prevvalue)
+    async function getaRecipe(){
+        const recipeFromAi = await getRecipeFromMistral(ingredients)
+        setrecipe(recipeFromAi)
     }
     return(
         <main>
@@ -29,7 +31,7 @@ export default function Main(){
             {ingredients.length > 0 && <IngredientsList ingredients={ingredients} recipe={getaRecipe}/>}
 
 
-            {recipeShown && <Recipe />}
+            {recipe && <Recipe recipe={recipe}/>}
         </main>
     )
 }
