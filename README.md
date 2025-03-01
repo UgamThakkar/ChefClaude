@@ -27,12 +27,14 @@ If you’re unhappy with the default build tools and configurations, this comman
 You don’t need to use eject—the default setup works well for small to medium projects—but it’s there if you need advanced customization.
 
 Getting Started
+Follow these steps to set up and run the project locally:
+
 Clone the Repository
 bash
 Wrap
 Copy
 git clone https://github.com/UgamThakkar/ChefClaude.git
-Replace your-username with your GitHub username.
+Replace UgamThakkar with your GitHub username if it differs.
 Navigate to the Directory
 bash
 Wrap
